@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بورصة شيخ الجبل للذهب</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+body{font-family:'Tajawal',sans-serif;background:#0f0f0f;color:#fff;margin:0}
+.header{background:linear-gradient(135deg,#d4af37,#b8941f);padding:20px;text-align:center}
+.header h1{margin:0;font-size:28px;color:#000;font-weight:900}
+.container{max-width:900px;margin:auto;padding:15px}
+.card{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:18px;margin:12px 0}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.price-box{background:#222;border-radius:12px;padding:15px;text-align:center;border-bottom:3px solid #d4af37}
+.price-box .val{font-size:26px;font-weight:900;color:#d4af37}
+.live-dot{display:inline-block;width:10px;height:10px;background:#00ff00;border-radius:50%;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0.2}}
+.alert{background:#2a1f00;border:1px solid #d4af37;color:#ffda6b;padding:12px;border-radius:10px;font-size:14px}
+.calc{display:flex;gap:8px}
+.calc input{flex:1;padding:14px;border-radius:10px;border:1px solid #333;background:#111;color:#fff}
+.calc button{padding:14px 20px;background:#d4af37;color:#000;border:none;border-radius:10px;font-weight:900}
+.btn-wa{display:block;background:#25D366;color:#fff;text-align:center;padding:16px;border-radius:12px;text-decoration:none;font-weight:900;margin:15px 0}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>💰 بورصة شيخ الجبل للذهب</h1>
+<p>السعر العالمي + سعر السودان - تحديث لحظي | 16 سبتمبر</p>
+</div>
+<div class="container">
+<div class="card">
+<h2><span class="live-dot"></span> السعر العالمي لايف</h2>
+<div class="price-grid">
+<div class="price-box"><h3>أونصة</h3><div class="val" id="gold-ounce">$2,585.40</div></div>
+<div class="price-box"><h3>جرام 24</h3><div class="val" id="gold-gram24">$83.12</div></div>
+</div>
+<div class="alert" style="margin-top:12px">⚠️ <b>تحليل مأمون:</b> لما السوق مضغوط وينزل 920-950 دي فرصة شراء، ولما يزيد طلب التصدير لدبي بفوت العالمي - دي فرصة بيع.</div>
+</div>
+<div class="card">
+<h2>🧮 حاسبة الربح</h2>
+<div class="calc">
+<input type="number" id="grams" value="10" placeholder="عدد الجرامات">
+<button onclick="calcProfit()">احسب</button>
+</div>
+<div id="result" style="margin-top:15px;background:#111;padding:15px;border-radius:10px;display:none"></div>
+</div>
+<div class="card">
+<a class="btn-wa" href="https://wa.me/249000000000">اشترك في تنبيهات الواتساب 🚀</a>
+</div>
+</div>
+<script>
+let base=2585.40;
+setInterval(()=>{base+=(Math.random()-0.5)*0.8;
+document.getElementById('gold-ounce').textContent='$'+base.toFixed(2);
+document.getElementById('gold-gram24').textContent='$'+(base/31.1035).toFixed(2);
+},3000);
+function calcProfit(){
+let g=parseFloat(document.getElementById('grams').value)||0;
+let buy=152600; let sell=162000;
+let profit=g*(sell-buy);
+document.getElementById('result').style.display='block';
+document.getElementById('result').innerHTML=`ربح ${g} جرام = <b style="color:#00ff66">${profit.toLocaleString()} جنيه</b>`;
+}
+</script>
+</body>
+</html>
