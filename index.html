@@ -3,64 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بورصة شيخ الجبل للذهب</title>
+<title>بورصة شيخ الجبل - سوق الدهب المباشر</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
-body{font-family:'Tajawal',sans-serif;background:#0f0f0f;color:#fff;margin:0}
-.header{background:linear-gradient(135deg,#d4af37,#b8941f);padding:20px;text-align:center}
-.header h1{margin:0;font-size:28px;color:#000;font-weight:900}
-.container{max-width:900px;margin:auto;padding:15px}
-.card{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:18px;margin:12px 0}
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.price-box{background:#222;border-radius:12px;padding:15px;text-align:center;border-bottom:3px solid #d4af37}
-.price-box .val{font-size:26px;font-weight:900;color:#d4af37}
-.live-dot{display:inline-block;width:10px;height:10px;background:#00ff00;border-radius:50%;animation:blink 1s infinite}
-@keyframes blink{50%{opacity:0.2}}
-.alert{background:#2a1f00;border:1px solid #d4af37;color:#ffda6b;padding:12px;border-radius:10px;font-size:14px}
-.calc{display:flex;gap:8px}
-.calc input{flex:1;padding:14px;border-radius:10px;border:1px solid #333;background:#111;color:#fff}
-.calc button{padding:14px 20px;background:#d4af37;color:#000;border:none;border-radius:10px;font-weight:900}
-.btn-wa{display:block;background:#25D366;color:#fff;text-align:center;padding:16px;border-radius:12px;text-decoration:none;font-weight:900;margin:15px 0}
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap');
+*{box-sizing:border-box}
+body{font-family:'Tajawal',sans-serif;background:#0a0a0a;color:#fff;margin:0;padding:10px}
+.header{text-align:center;padding:22px;background:linear-gradient(135deg,#1a1a1a 0%,#2c2410 100%);border:1.5px solid #c5a059;border-radius:16px;margin-bottom:14px}
+.price{font-size:42px;color:#ffd700;font-weight:800;margin:5px 0}
+.live{color:#00ff88;font-size:14px}
+.card{background:#151515;border:1px solid #2a2a2a;border-radius:14px;padding:16px;margin:12px auto;max-width:520px}
+.card.gold{border-color:#c5a059;background:#1e1c12}
+.card.vip{border-color:#00ffcc;background:#0f1e1c}
+.btn{display:block;width:100%;padding:13px;border-radius:10px;text-align:center;text-decoration:none;font-weight:800;margin:8px 0;font-size:15px}
+.btn-wa{background:#25D366;color:#fff}
+.btn-call{background:#111;border:1px solid #444;color:#fff}
+.btn-pay{background:#c5a059;color:#000}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:520px;margin:0 auto}
+.trader{background:#1a1a1a;border:1px solid #333;border-radius:12px;overflow:hidden;position:relative}
+.trader.vip{border-color:#ffd700;box-shadow:0 0 15px rgba(255,215,0,0.2)}
+.trader img{width:100%;height:135px;object-fit:cover}
+.trader .info{padding:10px}
+.trader h4{margin:0 0 3px;font-size:14px;color:#ffd700}
+.trader p{margin:2px 0;font-size:12px;color:#bbb}
+.trader .p{color:#ffd700!important;font-weight:800;font-size:14px!important}
+.badge{position:absolute;top:8px;right:8px;background:#ffd700;color:#000;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:800}
+.bank{text-align:center;background:#0f0f0f;border:1.5px dashed #ffd700;border-radius:10px;padding:12px;margin-top:12px}
+input,textarea{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #333;background:#222;color:#fff;font-family:'Tajawal'}
 </style>
 </head>
 <body>
+
 <div class="header">
-<h1>💰 بورصة شيخ الجبل للذهب</h1>
-<p>السعر العالمي + سعر السودان - تحديث لحظي | 16 سبتمبر</p>
+<h1 style="margin:0">⚜️ بورصة شيخ الجبل ⚜️</h1>
+<div class="price" id="goldPrice">66,250 SDG</div>
+<div class="live">● LIVE مباشر - شراء: 65,500 | بيع: 67,000</div>
+<p style="margin:8px 0 0;font-size:13px;color:#aaa">آخر تحديث: <span id="time"></span></p>
 </div>
-<div class="container">
-<div class="card">
-<h2><span class="live-dot"></span> السعر العالمي لايف</h2>
-<div class="price-grid">
-<div class="price-box"><h3>أونصة</h3><div class="val" id="gold-ounce">$2,585.40</div></div>
-<div class="price-box"><h3>جرام 24</h3><div class="val" id="gold-gram24">$83.12</div></div>
-</div>
-<div class="alert" style="margin-top:12px">⚠️ <b>تحليل مأمون:</b> لما السوق مضغوط وينزل 920-950 دي فرصة شراء، ولما يزيد طلب التصدير لدبي بفوت العالمي - دي فرصة بيع.</div>
-</div>
-<div class="card">
-<h2>🧮 حاسبة الربح</h2>
-<div class="calc">
-<input type="number" id="grams" value="10" placeholder="عدد الجرامات">
-<button onclick="calcProfit()">احسب</button>
-</div>
-<div id="result" style="margin-top:15px;background:#111;padding:15px;border-radius:10px;display:none"></div>
-</div>
-<div class="card">
-<a class="btn-wa" href="https://wa.me/249000000000">اشترك في تنبيهات الواتساب 🚀</a>
+
+<div class="card vip">
+<h3 style="margin:0;color:#00ffcc">💎 اشتراك VIP + إعلان ممول</h3>
+<p style="font-size:13px;color:#ccc">بضاعتك تظهر أول واحد + تنبيهات للزبائن</p>
+<p><b style="color:#ffd700">5,000 جنيه / الأسبوع</b></p>
+<a class="btn btn-wa" href="https://wa.me/249125455821?text=السلام عليكم يا شيخ الجبل، عايز احجز اعلان VIP في البورصة">📲 احجز مساحتك واتساب</a>
+<div class="bank">
+💳 <b>بنكك: 6461250</b><br>
+باسم: ابراهيم - شيخ الجبل<br>
+<small>ارسل الاشعار في نفس الواتساب</small>
 </div>
 </div>
+
+<h2 style="text-align:center;color:#c5a059;font-size:18px;margin:20px 0 10px">🏪 عروض التجار اليوم</h2>
+
+<div class="grid" id="adsGrid"></div>
+
+<!-- لوحة اضافة تاجر سريعة (ليك انت بس) -->
+<div class="card" style="margin-top:25px;border-color:#444">
+<h3>➕ اضافة تاجر جديد (خاص بيك)</h3>
+<input id="tName" placeholder="اسم المحل - مثال: مجوهرات البركة امدرمان">
+<input id="tItem" placeholder="البضاعة - مثال: غوايش 21 - 15 جرام">
+<input id="tPrice" placeholder="السعر - مثال: 1,010,000 SDG">
+<input id="tPhone" placeholder="رقم التاجر - مثال: 0912345678">
+<input id="tImg" placeholder="رابط صورة الدهب">
+<label style="font-size:12px"><input type="checkbox" id="tVip" style="width:auto"> تاجر مميز VIP ⭐</label>
+<button onclick="addTrader()" class="btn btn-pay">اضافة ونسخ الكود الجديد</button>
+<textarea id="codeOut" rows="6" style="display:none" readonly></textarea>
+<p style="font-size:11px;color:#777">بعد تضيف، انسخ الكود البطلع ليك والصقو مكان التجار في الملف عشان يثبت للكل.</p>
+</div>
+
 <script>
-let base=2585.40;
-setInterval(()=>{base+=(Math.random()-0.5)*0.8;
-document.getElementById('gold-ounce').textContent='$'+base.toFixed(2);
-document.getElementById('gold-gram24').textContent='$'+(base/31.1035).toFixed(2);
+// ==================== قائمة التجار ====================
+// عشان تضيف تاجر جديد، انسخ القوس ده وعدلو
+const traders = [
+  {
+    name: "مجوهرات البركة - سوق امدرمان",
+    item: "غوايش عيار 21 - وزن 15 جرام",
+    price: "1,010,000 SDG",
+    phone: "0912345678",
+    img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400",
+    vip: true
+  },
+  {
+    name: "شيخ الدهب - الخرطوم",
+    item: "سبيكة سويسرية 10 جرام",
+    price: "685,000 SDG",
+    phone: "0125455821",
+    img: "https://images.unsplash.com/photo-1601821765780-754fa98637c1?w=400",
+    vip: true
+  },
+  {
+    name: "مجوهرات النور - بحري",
+    item: "خاتم عيار 21 - 4.2 جرام",
+    price: "272,000 SDG",
+    phone: "0990000000",
+    img: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=400",
+    vip: false
+  },
+  {
+    name: "الخرطوم للدهب - السجانة",
+    item: "جنيه دهب انجليزي",
+    price: "520,000 SDG",
+    phone: "0911111111",
+    img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400",
+    vip: false
+  }
+];
+// ==================== نهاية القائمة ====================
+
+function render(){
+  let html="";
+  // VIP أول
+  [...traders].sort((a,b)=>b.vip-a.vip).forEach(t=>{
+    html+=`
+    <div class="trader ${t.vip?'vip':''}">
+      ${t.vip?'<span class="badge">⭐ VIP</span>':''}
+      <img src="${t.img}" onerror="this.src='https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400'">
+      <div class="info">
+        <h4>${t.name}</h4>
+        <p>${t.item}</p>
+        <p class="p">${t.price}</p>
+        <a class="btn btn-wa" style="padding:8px;font-size:12px" href="https://wa.me/249${t.phone.substring(1)}?text=شفت بضاعتك في بورصة شيخ الجبل: ${t.item}">واتساب</a>
+        <a class="btn btn-call" style="padding:8px;font-size:12px" href="tel:+249${t.phone.substring(1)}">اتصال</a>
+      </div>
+    </div>`;
+  });
+  document.getElementById('adsGrid').innerHTML=html;
+}
+render();
+
+// سعر حي + وقت
+setInterval(()=>{
+  let p=66250+Math.floor(Math.random()*600-300);
+  document.getElementById('goldPrice').innerText=p.toLocaleString()+' SDG';
+  document.getElementById('time').innerText=new Date().toLocaleTimeString('ar-SD');
 },3000);
-function calcProfit(){
-let g=parseFloat(document.getElementById('grams').value)||0;
-let buy=152600; let sell=162000;
-let profit=g*(sell-buy);
-document.getElementById('result').style.display='block';
-document.getElementById('result').innerHTML=`ربح ${g} جرام = <b style="color:#00ff66">${profit.toLocaleString()} جنيه</b>`;
+
+// اضافة تاجر سريعة
+function addTrader(){
+  const n=document.getElementById('tName').value, i=document.getElementById('tItem').value, pr=document.getElementById('tPrice').value, ph=document.getElementById('tPhone').value, im=document.getElementById('tImg').value, v=document.getElementById('tVip').checked;
+  if(!n||!ph){alert('اكتب اسم المحل والرقم');return}
+  const obj=`  {\n    name: "${n}",\n    item: "${i}",\n    price: "${pr}",\n    phone: "${ph}",\n    img: "${im||'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400'}",\n    vip: ${v}\n  },`;
+  document.getElementById('codeOut').style.display='block';
+  document.getElementById('codeOut').value=obj + "\n\nانسخ ده والصقو فوق في قائمة traders";
+  // اضافة مؤقتة للمعاينة
+  traders.unshift({name:n,item:i,price:pr,phone:ph,img:im,vip:v});
+  render();
 }
 </script>
 </body>
